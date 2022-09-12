@@ -1,0 +1,63 @@
+* {
+    background-color: #151520;
+    text-color: #CCCCCC;
+}
+
+window {
+    background-color: #151520;
+    padding: 20;
+    width: 20%;
+}
+
+listview {
+    padding: 20px 20px 10px 20px;
+}
+
+element-text {
+    background-color: #151520;
+    margin: 0 0 0 7px;
+    padding: 7 7 7 15;
+}
+
+element-text.selected {
+    background-color: #202029;
+}
+
+element.selected {
+    border-radius: 10px;
+    //background-color: #202029;
+    background-color: #a314a0;
+}
+
+entry {
+    spacing: 0;
+    placeholder: "Search";
+    placeholder-color: #484850;
+    background-color: #202029;
+}
+
+prompt {
+    spacing: 0;
+    background-color: #202029;
+    vertical-align: 0.5;
+}
+
+case-indicator {
+    spacing: 0;
+    background-color: #202029;
+}
+
+inputbar {
+    children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    border-radius: 10px;
+    background-color: #202029;
+    spacing: 0;
+    padding: 10px;
+    border: 2px solid;
+    border-color: #a314a0;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    margin: 0px 0.3em 0em 0em;
+}
