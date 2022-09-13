@@ -106,11 +106,16 @@ alias ls="${aliases[ls]:-ls} -A"
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
+
+#################
+# CUSTOM CONFIG #
+#################
+
 alias ls="exa -lahg --color=always --icons --git"
 alias lt="exa -lahTg --color=always --icons --level 2 --git"
 alias lta="exa -lahTg --color=always --icons --git"
-alias ltn="exa -lahTg --color=always --icons --level $1 --git"
-alias ltc="exa -xag --color=always --icons --git"
+alias ltn="exa -lahTg --color=always --icons --git --level $1"
+alias lc="exa -xag --color=always --icons --git"
 
 alias v="nvim"
 alias mc="mc --nosubshell"
