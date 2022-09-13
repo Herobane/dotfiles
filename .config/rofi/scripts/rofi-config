@@ -1,0 +1,13 @@
+#!/bin/bash
+
+LOCATION="$HOME/.config"
+
+CONFIG_FILES="\tqtile/config.py,\tkitty/kitty.conf,\tnvim/init.vim,\tconky/conky.conf,\tqtile/autostart.sh"
+
+ROFI_VALUE=$(echo -e $CONFIG_FILES | rofi -sep "," -i -theme fly-mini-v2 -l 5 -font "FontAwesome 17" -p "  " -dmenu)
+FILE=$(echo $ROFI_VALUE | awk '{print $2}')
+
+if [ ! -z $FILE ];
+then
+	kitty nvim "$LOCATION/$FILE"
+fi
