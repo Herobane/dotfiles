@@ -10,7 +10,8 @@ window {
 }
 
 mainbox {
-    children: [inputbar, listview, mode-switcher];
+    //children: [inputbar, listview, mode-switcher];
+    children: [inputbar, listview];
 }
 
 listview {
@@ -64,16 +65,9 @@ element.selected {
 
 entry {
     spacing: 0;
-    placeholder: "Search";
+    placeholder: "Search apps...";
     placeholder-color: #484850;
     background-color: #202029;
-}
-
-prompt {
-    spacing: 0;
-    background-color: #202029;
-    vertical-align: 0.5;
-    content: "";
 }
 
 case-indicator {
@@ -82,13 +76,23 @@ case-indicator {
 }
 
 inputbar {
-    children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children: [ button-search,textbox-prompt-colon,entry,case-indicator ];
     border-radius: 10px;
     background-color: #202029;
     spacing: 0;
     padding: 10px;
     border: 2px solid;
     border-color: #a314a0;
+}
+
+button-search {
+    content: "";
+    spacing: 0;
+    background-color: #202029;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    margin: 0 5 0 5;
+    expand: false;
 }
 
 textbox-prompt-colon {

@@ -54,6 +54,7 @@ inputbar {
     spacing: 0;
     padding: 10px;
     border: 2px solid;
+    //border-color: #a314a0;
     border-color: #a314a0;
 }
 

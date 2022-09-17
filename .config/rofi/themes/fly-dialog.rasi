@@ -1,0 +1,49 @@
+* {
+    background-color: #151520;
+    text-color: #CCCCCC;
+}
+
+window {
+    background-color: #151520;
+    //padding: 20;
+    width: 20%;
+}
+
+listview {
+    padding: 20px 20px 20px 20px;
+    columns: 4;
+    lines: 1;
+}
+
+element-text {
+    background-color: #151520;
+    margin: 0 0 0 0;
+    padding: 7 7 7 7;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    //font: "FiraCode Nerd Font 20";
+    font: "FontAwesome 20";
+}
+
+element-text.selected {
+    background-color: #a314a0;
+}
+
+element.selected {
+    border-radius: 10px;
+}
+
+inputbar {
+    //enabled: false;
+    children: [prompt];
+    //background-color: red;
+    border: 0 0 2 0;
+    border-color: #a314a0;
+}
+
+prompt {
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    font: "FontAwesome 20";
+    margin: 10 0 10 20;
+}
