@@ -3,47 +3,29 @@
 LOCATION=$HOME/.cache
 
 SEARCH_ENGINES="\tDuckDuckGo,\tStartPage,磌\tWikipedia,\tArchWiki,\tGentooWiki,戮\tProtonDB,輸\tYouTube, \tWolfram Alpha"
-#SEARCH_ENGINES="·· DuckDuckGo,·· StartPage,·磌· Wikipedia,·· ArchWiki,·· GentooWiki,·戮· ProtonDB,·輸· YouTube"
 
 ROFI_VALUE=$(echo -e $SEARCH_ENGINES | rofi -format 'i' -sep "," -i -theme fly-mini -l 8 -font "FontAwesome 17" -p "  " -no-custom -dmenu)
 
 if [ ! -z $ROFI_VALUE ];
 then
 	SEARCH_QUERY="$(tail -n 10 $LOCATION/rofi-searches$ROFI_VALUE.txt | tac | rofi -dmenu -font "FontAwesome 17" -p "  " -i -theme fly-mini -l $(tail -n 10 $LOCATION/rofi-searches$ROFI_VALUE.txt | wc -l))"
-	echo $SEARCH_QUERY
+
 	if [ -n "$SEARCH_QUERY" ];
-	#if [ $SEARCH_QUERY -ne "" ];
 	then
 		if [ -z $(tail -n 10 $LOCATION/rofi-searches$ROFI_VALUE.txt | grep "^$SEARCH_QUERY$") ];
 		then
 			echo $SEARCH_QUERY >> $LOCATION/rofi-searches$ROFI_VALUE.txt
 		fi
 
-		if [ $ROFI_VALUE -eq 0 ];
-		then
-			ddg "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 1 ];
-		then
-			spg "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 2 ];
-		then
-			wkp "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 3 ];
-		then
-			wka "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 4 ];
-		then
-			wkg "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 5 ];
-		then
-			pdb "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 6 ];
-		then
-			ytb "$SEARCH_QUERY"
-		elif [ $ROFI_VALUE -eq 7 ];
-		then
-			wlf "$SEARCH_QUERY"
-		fi
+		case $ROFI_VALUE in
+			0) ddg "$SEARCH_QUERY";;
+			1) spg "$SEARCH_QUERY";;
+			2) wkp "$SEARCH_QUERY";;
+			3) wka "$SEARCH_QUERY";;
+			4) wkg "$SEARCH_QUERY";;
+			5) pdb "$SEARCH_QUERY";;
+			6) ytb "$SEARCH_QUERY";;
+			7) wlf "$SEARCH_QUERY";;
+		esac
 	fi
 fi
-

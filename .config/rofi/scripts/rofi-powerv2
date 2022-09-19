@@ -3,36 +3,13 @@
 POWER_OPTIONS="|||襤"
 ROFI_VALUE=$(echo -ne ${POWER_OPTIONS[*]} | rofi -format 'i' -sep "|" -theme fly-power -dmenu)
 
-function confirm() {
-    CONFIRM_OPTIONS=" Yes| No"
-    CONFIRM_VALUE=$(echo -ne ${CONFIRM_OPTIONS[*]} | rofi -format 'i' -sep "|" -theme fly-dialog -p "Confirm $1 ?" -dmenu)
-
-    if [ ! -z $CONFIRM_VALUE ];
-    then
-        if [ $CONFIRM_VALUE -eq 0 ];
-        then
-            eval "$2"
-        else
-            echo "Canceled"
-        fi
-    fi
-}
-
 if [ ! -z $ROFI_VALUE ];
 then
     case $ROFI_VALUE in
-        0)
-            echo "Locking..."
-            xscreensaver-command --lock;;
-        1)
-            echo "Leaving..."
-            confirm "Leave" "qtile cmd-obj -o cmd -f shutdown";;
-        2)
-            echo "Rebooting..."
-            confirm "Restart" "reboot";;
-        3)
-            echo "Shutting down..."
-            confirm "Shutdown" "poweroff";;
+        0) xscreensaver-command --lock;;
+        1) rofi-confirm "Leave" "qtile cmd-obj -o cmd -f shutdown";;
+        2) rofi-confirm "Restart" "reboot";;
+        3) rofi-confirm "Shutdown" "poweroff";;
     esac
 fi
 

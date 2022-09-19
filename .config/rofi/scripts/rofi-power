@@ -1,28 +1,12 @@
 #!/bin/bash
 
-#ROFI_VALUE=$(echo "abc" | rofi -dmenu)
-
-#echo $ROFI_VALUE
-
-POWER_OPTIONS="\tLock|\tLeave|\tRestart|襤\tShutdown" 
-#POWER_OPTIONS="·· Lock|·· Restart|·襤· Shutdown" 
+POWER_OPTIONS="\tLock|\tLeave|\tRestart|襤\tShutdown"
 
 ROFI_VALUE=$(echo -e ${POWER_OPTIONS[*]} | rofi -format 'i' -sep "|" -i -theme fly-mini -l 4 -font "FontAwesome 17" -p "  " -dmenu)
 
-if [ $ROFI_VALUE -eq 0 ];
-then
-    echo "Locking..."
-    xscreensaver-command --lock
-elif [ $ROFI_VALUE -eq 1 ];
-then
-    echo "Leaving..."
-    qtile cmd-obj -o cmd -f shutdown
-elif [ $ROFI_VALUE -eq 2 ];
-then
-    echo "Rebooting..."
-    reboot
-elif [ $ROFI_VALUE -eq 3 ];
-then
-    echo "Shutting down..."
-    poweroff
-fi
+case $ROFI_VALUE in
+    0) xscreensaver-command --lock;;
+    1) rofi-confirm "Leave" "qtile cmd-obj -o cmd -f shutdown";;
+    2) rofi-confirm "Restart" "reboot";;
+    3) rofi-confirm "Shutdown" "poweroff";;
+esac
